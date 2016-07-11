@@ -63,6 +63,9 @@ def qualname(obj):
         except AttributeError:
             code = obj.func_code
         lineno = code.co_firstlineno
+    elif inspect.iscode(obj):
+        code = obj
+        lineno = code.co_firstlineno
     else:
         return obj.__qualname__  # raises a sensible error
 
